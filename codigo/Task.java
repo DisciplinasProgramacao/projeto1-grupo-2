@@ -1,11 +1,9 @@
-import java.util.ArrayList;
 
 public class Task {
     // #region attributes
     private String name;
     private String description;
     private Date date;
-    private ArrayList<Task> periodicTasks;  
     // #endregion
 
     // #region methods
@@ -19,10 +17,10 @@ public class Task {
      * @param periodicity      interval of days
      * @param periodicityLimit periodicity repetitions
      */
-    public Task(String date, String name, String description, int periodicity, int periodicityLimit) {
+    public Task(String date, String name, String description, int periodicity) {
         init(name, description);
         if (verifyPeriodicity(periodicity))
-            createTaskPeriodicity(date, periodicity, periodicityLimit);
+            createTaskPeriodicity(date, periodicity);
         else
             createTask(date);
     }
@@ -35,9 +33,11 @@ public class Task {
     private void createTask(String date) {
         int day, month, year;
         String[] detailDate = date.split("/");
+
         day = Integer.parseInt(detailDate[0]);
         month = Integer.parseInt(detailDate[1]);
         year = Integer.parseInt(detailDate[2]);
+
         this.date = new Date(day, month, year);
     }
 
@@ -46,17 +46,14 @@ public class Task {
      * 
      * @param date of commitment (dd/MM/AAAA)
      */
-    private void createTaskPeriodicity(String date, int periodicity, int periodicityLimit) {
-        periodicTasks = new ArrayList<>(); 
-        for (int i = 0; i < periodicityLimit; i++) {
-            createTask(date);
-            periodicTasks.add(this);
-            date = this.date.incrementsDate(date, periodicity);
-        }
+    private void createTaskPeriodicity(String date, int periodicity) {
+        createTask(date);
+        date = this.date.incrementsDate(date, periodicity);
     }
 
     /**
      * attribute initializer method
+     * 
      * @param name             appointment name
      * @param description      description of the appointment
      * @param periodicity      interval of days
@@ -69,6 +66,7 @@ public class Task {
 
     /**
      * if periodicity checks was informed
+     * 
      * @return "true" for periodicity > 0 or "false" for periodicity <= 0
      */
     private boolean verifyPeriodicity(int periodicity) {

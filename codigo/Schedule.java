@@ -2,17 +2,23 @@ import java.util.ArrayList;
 
 public class Schedule {
 
-    private ArrayList<Task> tasks;
+    private ArrayList<Task> schedule = new ArrayList<>();
 
-    public Schedule(){
-        tasks = new ArrayList<>();
+    private void newTask(String date, String name, String description, int periodicity) {
+        Task newTask = new Task(date, name, description, periodicity);
+        schedule.add(newTask);
     }
 
-   public void createTask(String date, String name, String description, int periodicity, int periodicityLimit) {
-      Task newTask = new Task(date, name, description, periodicity, periodicityLimit);
-      tasks.add(newTask); 
-   }
-   
- 
-    
+    public void createAppointment(String date, String name, String description, int periodicity, int periodicityLimit) {
+
+        if (periodicityLimit > 0) {
+            for (int i = 0; i < periodicityLimit; i++) {
+                newTask(date, name, description, periodicity);
+            }
+        } else {
+            newTask(date, name, description, periodicity);
+        }
+
+    }
+
 }
