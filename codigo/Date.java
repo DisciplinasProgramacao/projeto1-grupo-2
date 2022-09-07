@@ -13,22 +13,14 @@ public class Date {
     private int day;
     private int month;
     private int year;
-
     // #endregion
-
-    private void init() {
-        this.day = ;
-        this.month = ;
-        this.year = ;
-    }
 
     public void formatDate(String dateInput) {
         String[] datePart = dateInput.split("/");
-        int day, month, year;
 
-        day = Integer.parseInt(datePart[0]);
-        month = Integer.parseInt(datePart[1]);
-        year = Integer.parseInt(datePart[2]);
+        this.day = Integer.parseInt(datePart[0]);
+        this.month = Integer.parseInt(datePart[1]);
+        this.year = Integer.parseInt(datePart[2]);
     }
     
     
