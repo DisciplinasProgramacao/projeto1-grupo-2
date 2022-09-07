@@ -6,9 +6,7 @@ public class Schedule {
     private static ArrayList<Task> schedule = new ArrayList<>();
 
     public void addTask(Task task) {
-        
         schedule.add(task);
     }
  
-    
 }
