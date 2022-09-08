@@ -29,6 +29,10 @@ public class Date {
     
     }
 
+    /**
+     * Tests if the year is a leap year
+     * @return if it is a leap year or not
+     */
     public boolean isLeapYear() {
         boolean answer = false;
         if (this.year % 400 == 0)
@@ -39,7 +43,10 @@ public class Date {
         return answer;
     }
 
-  
+    /**
+     * Valitates the data 
+     * @return answers if the date is a valid date or not
+     */
     private Boolean isDateValid() {
         Boolean answer = true; 
         int maxDays = 0;
@@ -61,7 +68,10 @@ public class Date {
     }
 
 
-
+    /**
+     * Formate the string date
+     * return a formated string DD/MM/YY
+     */
     public String formatedDate() {
 
         return (String.format("%02d", this.day) + "/" + String.format("%02d", this.month) + "/"
