@@ -77,7 +77,6 @@ public class Date {
         return (String.format("%02d", this.day) + "/" + String.format("%02d", this.month) + "/"
                 + String.format("%4d", this.year));
     }
-
     public String incrementDate(String date, int quantity) {
         int day, month, year;
         String[] detailDate = date.split("/");
@@ -85,22 +84,21 @@ public class Date {
         month = Integer.parseInt(detailDate[1]);
         year = Integer.parseInt(detailDate[2]);
 
-        Date auxDate = new Date(day, month, year);
+        this.day = this.day += quantity;
 
-        this.day = auxDate.day += quantity;
-
-        if (auxDate.day >= MONTHDAYS[auxDate.month]) {
-            if (auxDate.month == 12) {
-                this.year = auxDate.year++;
-                this.month = auxDate.month = 1;
+        if (this.day >= MONTHDAYS[this.month]) {
+            if (this.month == 12) {
+                this.year = this.year++;
+                this.month = 1;
             } else {
-                this.month = auxDate.month++;
+                this.month = this.month++;
             }
-            auxDate.day = auxDate.day - MONTHDAYS[auxDate.month];
-            this.day = auxDate.day;
+            this.day = this.day - MONTHDAYS[this.month];
+
         }
 
         return formatedDate();
+
 
     }
 

@@ -41,7 +41,7 @@ public class DateTest {
 
     @Test
     public void testingIncrementeDateReturn(){
-        assertEquals("29/02/2024",date.incrementsDate("29/02/2024",0));
+        assertEquals("29/02/2024",date.incrementDate("29/02/2024",0));
     }
 
 
