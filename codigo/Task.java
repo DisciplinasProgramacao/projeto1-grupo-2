@@ -1,15 +1,15 @@
 
 public class Task {
-    // #region attributes
+    // #region Attributes
     private String name;
     private String description;
     private Date date;
     // #endregion
 
-    // #region methods
-
+    //#region - Constructors
+    
     /**
-     * builder to create a new appointment
+     * Constructor to create a new appointment
      * 
      * @param date             date of commitment (dd/MM/AAAA)
      * @param name             appointment name
@@ -25,9 +25,12 @@ public class Task {
             createTask(date);
     }
 
+
+    //#endregion
+   
+    // #region methods
     /**
-     * creation of new date
-     * 
+     * Creation of new task
      * @param date of commitment (dd/MM/AAAA)
      */
     private void createTask(String date) {
@@ -42,7 +45,7 @@ public class Task {
     }
 
     /**
-     * creation of a new periodic date
+     * Void creation of a new periodic task 
      * 
      * @param date of commitment (dd/MM/AAAA)
      */
@@ -78,7 +81,7 @@ public class Task {
     }
     // #endregion
 
-    // #region getters e setters
+    // #region getters and setters
     public String getName() {
         return name;
     }
