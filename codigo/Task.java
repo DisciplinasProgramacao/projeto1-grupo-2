@@ -79,6 +79,15 @@ public class Task {
         else
             return false;
     }
+
+
+    /**
+     * Creates a String representing the data (name and description) of a created task
+     * @return String
+     */
+    public String showTask(){
+        return "\nTitulo: " + this.name + "\nDescrição: " + this.description;
+    }
     // #endregion
 
     // #region getters and setters

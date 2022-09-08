@@ -45,6 +45,23 @@ public class Schedule {
 
     }
 
+    /**
+     * Search for Tasks created in a due date and presents it for the user
+     * @param date Chosen date by the user
+     * @return
+     */
+
+    public String searchTasksByDate(String date){
+        StringBuilder scheduleList = new StringBuilder("Compromissos para a data: " + date + "\n");
+        
+        for(Task appointment : schedule){
+            if(appointment.getDate().equals(date)){
+                scheduleList.append("\n" +  appointment.showTask());
+            }
+        }
+        return scheduleList.toString();
+    }
+
     //#endregion
 
 }
