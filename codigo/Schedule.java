@@ -13,6 +13,10 @@ public class Schedule {
 
         if (periodicityLimit > 0) {
             for (int i = 0; i < periodicityLimit; i++) {
+
+                if(i>0)
+                    date = schedule.get(i-1).getDate();
+
                 newTask(date, name, description, periodicity);
             }
         } else {

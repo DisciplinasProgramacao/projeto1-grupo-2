@@ -25,4 +25,14 @@ public class ScheduleTest {
             );
     }
 
+    @Test
+    public void registraNovaAgendaDeFormaPeriodica() {
+        agenda.createAppointment("07/09/2022",
+         "Reunião cá Senior",
+          "Senior salvando o dia ",
+           2,
+            3
+            );
+    }
+
 }

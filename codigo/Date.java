@@ -114,7 +114,7 @@ public class Date {
                 + String.format("%4d", this.year));
     }
 
-    public String incrementsDate(String date, int quantity) {
+    public String incrementDate(String date, int quantity) {
         int day, month, year;
         String[] detailDate = date.split("/");
         day = Integer.parseInt(detailDate[0]);
@@ -123,15 +123,17 @@ public class Date {
 
         Date auxDate = new Date(day, month, year);
 
-        auxDate.day += quantity;
+        this.day = auxDate.day += quantity;
 
         if (auxDate.day >= MONTHDAYS[auxDate.month]) {
             if (auxDate.month == 12) {
-                auxDate.year++;
-                auxDate.month = 1;
-            } else
-                 auxDate.month++;
+                this.year = auxDate.year++;
+                this.month = auxDate.month = 1;
+            } else {
+                this.month = auxDate.month++;
+            }
             auxDate.day = auxDate.day - MONTHDAYS[auxDate.month];
+            this.day = auxDate.day;
         }
 
         return formatedDate();

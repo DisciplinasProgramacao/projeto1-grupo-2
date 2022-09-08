@@ -48,7 +48,8 @@ public class Task {
      */
     private void createTaskPeriodicity(String date, int periodicity) {
         createTask(date);
-        date = this.date.incrementsDate(date, periodicity);
+        date = this.date.incrementDate(date, periodicity);
+
     }
 
     /**
@@ -80,6 +81,10 @@ public class Task {
     // #region getters e setters
     public String getName() {
         return name;
+    }
+
+    public String getDate() {
+        return date.formatedDate();
     }
 
     public void setName(String name) {
