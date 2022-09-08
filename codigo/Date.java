@@ -51,7 +51,7 @@ public class Date {
         Boolean answer = true; 
         int maxDays = 0;
 
-        if (this.year <= 2022)
+        if (this.year < 2022)
             answer = false;
         else {
             if (this.month < 1 || this.month > 12) 
