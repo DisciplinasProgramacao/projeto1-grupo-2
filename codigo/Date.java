@@ -5,7 +5,6 @@ public class Date {
     // #region attributes
     // constante: dias de cada mês
     private static final int[] MONTHDAYS = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-    private static final int CURRENTYEAR = 2022;
 
 
     // Fields
@@ -18,54 +17,21 @@ public class Date {
     // #region Construtores
 
     /**
-     * 
-     * @param day
-     * @param month 
-     * @param year 
+     * Constructor that creates a date given a year.
+     * @param day The day number from 1 to 31***
+     * @param month The month number from 1 to 12
+     * @param year The year
      */
-    private void init(int day, int month, int year) {
+    public Date(int day, int month, int year) {
         this.day = day;
         this.month = month;
         this.year = year;
-        if (!this.isDateValid()) { 
-            this.day = this.month = 1;
-            this.year = 1900;
-        }
-
-    }
-
-    /**
-     * 
-     * @param day 
-     * @param month 
-     * @param year 
-     */
-    public Date(int day, int month, int year) {
-        this.init(day, month, year);
-    }
-
-    /**
     
-     * 
-     * @param dia 
-     * @param mes 
-     * 
-     */
-    public Date(int dia, int mes) {
-        this.init(dia, mes, CURRENTYEAR);
     }
 
     /**
-     * Construtor para data padrão: 01/01/1900
-     */
-    public Date() {
-        this.init(1, 1, 1990);
-    }
-    // #endregion
-
-    /**
-     * 
-     * @return 
+     * Tests if the year is a leap year
+     * @return if it is a leap year or not
      */
     public boolean isLeapYear() {
         boolean answer = false;
@@ -78,15 +44,14 @@ public class Date {
     }
 
     /**
-     *
-     * 
-     * @return 
+     * Valitates the data 
+     * @return answers if the date is a valid date or not
      */
-    private Boolean isDateValid() {
+    public Boolean isDateValid() {
         Boolean answer = true; 
         int maxDays = 0;
 
-        if (this.year < 1900)
+        if (this.year < 2022)
             answer = false;
         else {
             if (this.month < 1 || this.month > 12) 
@@ -104,9 +69,8 @@ public class Date {
 
 
     /**
-     * 
-     * 
-     * @return 
+     * Formate the string date
+     * return a formated string DD/MM/YY
      */
     public String formatedDate() {
 
