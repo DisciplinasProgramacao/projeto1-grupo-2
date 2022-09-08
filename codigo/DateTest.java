@@ -39,6 +39,12 @@ public class DateTest {
         assertEquals("29/02/2024",date.formatedDate());
     }
 
+    @Test
+    public void testingIncrementeDateReturn(){
+        assertEquals("29/02/2024",date.incrementsDate("29/02/2024",0));
+    }
+
+
     
     
 }
