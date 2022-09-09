@@ -24,37 +24,46 @@ public class ScheduleTest {
     @Test
     public void registerNewAppointment() {
         agenda.createAppointment("07/09/2022",
-         "Reunião cá Senior",
-          "Senior salvando o dia ",
-           0,
-            0
-            );
+                "Reunião em grupo",
+                "Trabalho de PM",
+                0,
+                0);
     }
 
     @Test
     public void registerARecurringAppointment() {
-        agenda.createAppointment("07/09/2022",
-         "Reunião cá Senior",
-          "Senior salvando o dia ",
-           2,
-            3
-            );
+        agenda.createAppointment("11/09/2022",
+                "Reunião em grupo",
+                "Trabalho de PM",
+                2,
+                3);
+        assertEquals("Compromissos para a data: 11/09/2022" +
+                "\n\n\nTitulo: Reunião em grupo" +
+                "\nDescrição: Trabalho de PM",
+                agenda.searchTasksByDate("11/09/2022"));
     }
 
     @Test
     @Order(2)
-    public void listTaksInAChosenDate(){
+    public void listTaksInAChosenDate() {
         registerNewAppointment();
         registerNewAppointment();
-        System.out.println(agenda.searchTasksByDate("07/09/2022"));
+        assertEquals("Compromissos para a data: 07/09/2022" +
+                "\n\n\nTitulo: Reunião em grupo" +
+                "\nDescrição: Trabalho de PM" +
+                "\n\nTitulo: Reunião em grupo" +
+                "\nDescrição: Trabalho de PM",
+                agenda.searchTasksByDate("07/09/2022"));
     }
 
     @Test
     @Order(2)
-    public void listTasksInAWrongDate(){
+    public void listTasksInAWrongDate() {
         registerNewAppointment();
         registerNewAppointment();
         System.out.println(agenda.searchTasksByDate("06/09/2022"));
+        assertEquals("Compromissos para a data: 06/09/2022\n",
+                agenda.searchTasksByDate("06/09/2022"));
     }
 
 }

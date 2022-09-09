@@ -6,8 +6,8 @@ public class Task {
     private Date date;
     // #endregion
 
-    //#region - Constructors
-    
+    // #region - Constructors
+
     /**
      * Constructor to create a new appointment
      * 
@@ -25,34 +25,33 @@ public class Task {
             createTask(date);
     }
 
+    // #endregion
 
-    //#endregion
-   
     // #region methods
     /**
      * Creation of new task
+     * 
      * @param date of commitment (dd/MM/AAAA)
      */
     private void createTask(String date) {
-        int day, month, year;
         String[] detailDate = date.split("/");
 
-        day = Integer.parseInt(detailDate[0]);
-        month = Integer.parseInt(detailDate[1]);
-        year = Integer.parseInt(detailDate[2]);
-
-        this.date = new Date(day, month, year);
+        this.date = new Date(Integer.parseInt(detailDate[0]),
+                Integer.parseInt(detailDate[1]), Integer.parseInt(detailDate[2]));
     }
 
     /**
-     * Void creation of a new periodic task 
+     * Void creation of a new periodic task
      * 
      * @param date of commitment (dd/MM/AAAA)
      */
     private void createTaskPeriodicity(String date, int periodicity) {
         createTask(date);
-        date = this.date.incrementDate(date, periodicity);
-
+        try {
+            this.date.incrementDate(periodicity);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
@@ -80,12 +79,13 @@ public class Task {
             return false;
     }
 
-
     /**
-     * Creates a String representing the data (name and description) of a created task
+     * Creates a String representing the data (name and description) of a created
+     * task
+     * 
      * @return String
      */
-    public String showTask(){
+    public String showTask() {
         return "\nTitulo: " + this.name + "\nDescrição: " + this.description;
     }
     // #endregion

@@ -2,14 +2,15 @@ import java.util.ArrayList;
 
 public class Schedule {
 
-    //#region
+    // #region
     private ArrayList<Task> schedule = new ArrayList<>();
-    //#endregion
-    
-    //#region - Methods
+    // #endregion
+
+    // #region - Methods
 
     /**
      * Insert a new task into the schedule's list
+     * 
      * @param date
      * @param name
      * @param description
@@ -19,10 +20,10 @@ public class Schedule {
         Task newTask = new Task(date, name, description, periodicity);
         schedule.add(newTask);
     }
-    
 
     /**
      * Creates and validates tasks with the chosen periodicity and periodicity limit
+     * 
      * @param date
      * @param name
      * @param description
@@ -33,35 +34,36 @@ public class Schedule {
 
         if (periodicityLimit > 0) {
             for (int i = 0; i < periodicityLimit; i++) {
-
-                if(i>0)
-                    date = schedule.get(i-1).getDate();
-
-                newTask(date, name, description, periodicity);
+                if (i > 0) {
+                    date = schedule.get(i - 1).getDate();
+                    newTask(date, name, description, periodicity);
+                } else
+                    newTask(date, name, description, 0);
             }
         } else {
-            newTask(date, name, description, periodicity);
+            newTask(date, name, description, 0);
         }
 
     }
 
     /**
      * Search for Tasks created in a due date and presents it for the user
+     * 
      * @param date Chosen date by the user
      * @return
      */
 
-    public String searchTasksByDate(String date){
+    public String searchTasksByDate(String date) { 
         StringBuilder scheduleList = new StringBuilder("Compromissos para a data: " + date + "\n");
-        
-        for(Task appointment : schedule){
-            if(appointment.getDate().equals(date)){
-                scheduleList.append("\n" +  appointment.showTask());
+
+        for (Task appointment : schedule) {
+            if (appointment.getDate().equals(date)) {
+                scheduleList.append("\n" + appointment.showTask());
             }
         }
         return scheduleList.toString();
     }
 
-    //#endregion
+    // #endregion
 
 }
